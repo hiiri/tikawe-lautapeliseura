@@ -10,3 +10,12 @@
 - Käyttäjä pystyy ilmoittautumaan tapahtumaan. Ilmoituksessa näytetään, ketkä käyttäjät ovat ilmoittautuneet.
 
 Tässä pääasiallinen tietokohde on tapahtuma ja toissijainen tietokohde on ilmoittautuminen.
+
+
+# Käyttäminen
+## Luo tietokanta
+```sqlite3 database.db < schema.sql```
+## Aja sovellus
+```flask run```
+
+Sovellus avautuu oletuksena osoitteeseen http://127.0.0.1:5000
