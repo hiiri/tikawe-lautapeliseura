@@ -14,6 +14,7 @@ app.secret_key = config.secret_key
 @app.route("/")
 def index():
     event_list = events.get_events()
+    print(event_list, "events list")
     return render_template("index.html", events=event_list)
 
 
@@ -56,3 +57,13 @@ def login():
 def logout():
     del session["user_id"]
     return redirect("/")
+
+@app.route("/new_event", methods=["POST"])
+def new_event():
+    title = request.form["title"]
+    date = request.form["date"]
+    num_players = request.form["num_players"]
+    user_id = session["user_id"]
+
+    event_id = events.add_event(title, date, num_players, user_id)
+    return redirect("/event/" + str(event_id))

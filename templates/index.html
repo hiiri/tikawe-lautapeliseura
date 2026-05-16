@@ -6,6 +6,7 @@
 </head>
 
 <body>
+  <p>
   {% if session.user_id %}
   <a href="/logout">Kirjaudu ulos</a>
   {% else %}
@@ -21,6 +22,41 @@
       <input type="password" name="password" />
     </p>
     <input type="submit" value="Kirjaudu" />
+  </form>
+  {% endif %}
+  </p>
+
+  <hr />
+  {{ events.total }} tapahtumaa
+  {% for event in events %}
+  <p>
+    <a href="/event/{{ event.id }}">{{ event.title }}</a>
+    <br />
+  </p>
+  <hr />
+  {% endfor %}
+
+  {% if session.user_id %}
+  <h2>Uusi tapahtuma</h2>
+
+  <form action="/new_event" method="post">
+    <p>
+      Otsikko:<br />
+      <input type="text" name="title" />
+    </p>
+    <p>
+      Päivämäärä:<br />
+      <input
+        type="date"
+        id="date"
+        name="date"
+        />
+    </p>
+    <p>
+      Pelaajien määrä:<br />
+      <input type="text" name="num_players" />
+    </p>
+    <input type="submit" value="Lähetä" />
   </form>
   {% endif %}
 </body>

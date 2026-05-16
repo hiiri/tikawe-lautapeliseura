@@ -8,7 +8,7 @@ CREATE TABLE events (
     id INTEGER PRIMARY KEY,
     title TEXT,
     date TEXT,
-    number_of_players INTEGER,
+    num_players INTEGER,
     user_id INTEGER REFERENCES users
 );
 
